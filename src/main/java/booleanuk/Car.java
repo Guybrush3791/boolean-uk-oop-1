@@ -26,7 +26,7 @@ public class Car {
 
     public String getWrongOwnerFullName() {
 
-        return owner.firstName + " " + owner.lastName;
+        return null; // owner.firstName + " " + owner.lastName;
     }
 
     public String getOwnerFullName() {

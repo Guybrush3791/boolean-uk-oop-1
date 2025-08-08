@@ -1,13 +1,69 @@
 package booleanuk;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Human {
 
-    String firstName;
-    String lastName;
+    private String firstName;
+    private String lastName;
 
-    LocalDate dateOfBirth;
+    private LocalDate dateOfBirth;
+
+    public Human(String firstName, String lastName, LocalDate dateOfBirth) {
+
+        // this.firstName = firstName;
+        setFirstName(firstName);
+        // this.lastName = lastName;
+        setLastName(lastName);
+        // this.dateOfBirth = dateOfBirth;
+        setDateOfBirth(dateOfBirth);
+    }
+
+    public String getFirstName() {
+
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+
+        // don't want empty string, blank string, less then 3 char(s) string
+        if (checkString(firstName)) {
+
+            this.firstName = "Default";
+
+            return;
+        }
+
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+
+        if (checkString(lastName)) {
+
+            this.lastName = "Last Default";
+
+            return;
+        }
+
+        this.lastName = lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+
+
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+
+        // don't want future date, very past date
+
+        this.dateOfBirth = dateOfBirth;
+    }
 
     public String getFullName() {
 
@@ -37,5 +93,12 @@ public class Human {
     public void run() {
 
         System.out.println("Human is running");
+    }
+
+    private boolean checkString(String str) {
+
+        return str == null
+                || str.isBlank()
+                || str.length() <= 3;
     }
 }
